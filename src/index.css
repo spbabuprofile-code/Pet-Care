@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-primary: #FF6B35;
+  --color-secondary: #4A4A4A;
+  --color-accent-green: #10B981;
+  --color-accent-blue: #3B82F6;
+  --color-accent-yellow: #F59E0B;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-text-light: #9CA3AF;
+
+  --font-sans: 'Inter', sans-serif;
+}
 
 @layer base {
   html {
@@ -10,49 +20,140 @@
   }
 
   body {
-    @apply font-sans text-text-primary bg-white;
+    font-family: var(--font-sans);
+    color: var(--color-text-primary);
+    background-color: white;
   }
 
   h1 {
-    @apply text-5xl md:text-6xl font-bold;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.75rem;
+    }
   }
 
   h2 {
-    @apply text-4xl md:text-5xl font-semibold;
+    font-size: 2.25rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 3rem;
+    }
   }
 
   h3 {
-    @apply text-3xl md:text-4xl font-semibold;
+    font-size: 1.875rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 2.25rem;
+    }
   }
 
   h4 {
-    @apply text-xl md:text-2xl font-medium;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  @media (min-width: 768px) {
+    h4 {
+      font-size: 1.5rem;
+    }
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-lg font-medium transition-all hover:bg-opacity-90 hover:shadow-lg;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
 
   .btn-secondary {
-    @apply bg-white text-primary border border-primary px-6 py-3 rounded-lg font-medium transition-all hover:bg-primary hover:text-white;
+    background-color: white;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
   }
 
   .btn-text {
-    @apply text-accent-blue underline-offset-4 hover:underline;
+    color: var(--color-accent-blue);
+    text-underline-offset: 4px;
+  }
+
+  .btn-text:hover {
+    text-decoration: underline;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+
+  .card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   }
 
   .input-field {
-    @apply w-full border border-gray-300 rounded-md px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    width: 100%;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.375rem;
+    padding: 0.625rem 1rem;
+  }
+
+  .input-field:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: var(--color-primary);
+    border-color: transparent;
   }
 
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-custom {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-custom {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 }
 
